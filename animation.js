@@ -4,8 +4,8 @@
 
 var animation = function(spec){
     var that = Object.create(null),
-    d = document,
-    canvas = d.body.appendChild(d.createElement('canvas'));
+        d = document,
+        canvas = d.body.appendChild(d.createElement('canvas'));
 
     canvas.id = spec.canvasID || "";
     canvas.width = spec.width || 300;
