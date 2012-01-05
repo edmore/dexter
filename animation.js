@@ -1,3 +1,7 @@
+// HTML5 Canvas animation library
+// http://edmoremoyo.com
+// Credits : Paul Irish for shim layer
+
 var animation = function(spec){
     var that = Object.create(null),
     d = document,
