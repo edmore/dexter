@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="animation.js"></script>
+    <script>
+      var draw = function(){
+        var dexter = animation({canvasID : "dexter", context : "2d", width : 500, height : 375}),
+        context = dexter.getContext();
+
+        var drawAfterInterval = function(value, x, y, interval){
+          setInterval(function(){
+            context.fillText(value, x, y)
+          }, interval);
+        };
+
+        if (context){
+          // Draw Guiding lines
+          for (var x = 0.5; x < 500; x += 10) {
+            context.moveTo(x, 0);
+            context.lineTo(x, 375);
+          }
+          for (var y = 0.5; y < 375; y += 10) {
+            context.moveTo(0, y);
+            context.lineTo(500, y);
+          }
+          context.strokeStyle = "#eee";
+          context.stroke();
+
+          //Draw Graphic
+          context.font = "bold italic 100px Gothic";
+          context.textBaseline = "top";
+
+          context.fillStyle = "red";
+          context.fillText("D", 100, 100);
+          drawAfterInterval("E", 156, 100, 1000);
+          drawAfterInterval("X", 210, 100, 2000);
+          drawAfterInterval("T", 265, 100, 3000);
+          drawAfterInterval("E", 308, 100, 4000);
+          drawAfterInterval("R", 359, 100, 5000);
+        }
+      };
+    </script>
+  </head>
+  <body onload="draw();">
+  </body>
+</html>
