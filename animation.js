@@ -2,6 +2,18 @@
 // http://edmoremoyo.com
 // Credits : Paul Irish for shim layer
 
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame    ||
+        window.oRequestAnimationFrame      ||
+        window.msRequestAnimationFrame     ||
+        function(callback){
+        window.setTimeout(callback, 1000 / 60);
+    };
+}());
+
+
 var animation = function(spec){
     var that = Object.create(null),
         d = document,
@@ -22,18 +34,5 @@ var animation = function(spec){
     that.getContext = function(){
         return that.getCanvas().getContext(spec.context);
     };
-
-    // shim layer with setTimeout fallback : courtesy of Paul Irish
-    window.requestAnimFrame = (function(){
-        return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            window.oRequestAnimationFrame      ||
-            window.msRequestAnimationFrame     ||
-            function(callback){
-            window.setTimeout(callback, 1000 / 60);
-        };
-    }());
-
     return that;
 };
